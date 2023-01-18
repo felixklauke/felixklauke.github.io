@@ -5,6 +5,7 @@ import { Header } from '@/components/Header'
 
 import '@/styles/tailwind.css'
 import 'focus-visible'
+import {appWithTranslation} from "next-i18next";
 
 function usePrevious(value) {
   let ref = useRef()
@@ -16,7 +17,7 @@ function usePrevious(value) {
   return ref.current
 }
 
-export default function App({ Component, pageProps, router }) {
+function App({ Component, pageProps, router }) {
   let previousPathname = usePrevious(router.pathname)
 
   return (
@@ -36,3 +37,6 @@ export default function App({ Component, pageProps, router }) {
     </>
   )
 }
+
+
+export default appWithTranslation(App)

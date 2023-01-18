@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "title": "Über mich - Felix Klauke",
+    "description": "Ich bin Felix Klauke, ein Softwarearchitekt und Entrepreneur aus dem Sauerland."
+  },
+  "social": {
+    "twitter": "Folge mir auf Twitter",
+    "instagram": "Folge mir auf Instagram",
+    "github": "Folge mir auf Github",
+    "linkedin": "Folge mir auf LinkedIn"
+  },
+  "content": {
+    "title": "Ich bin Felix Klauke..."
+  }
+}

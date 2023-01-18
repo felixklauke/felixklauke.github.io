@@ -1,8 +1,10 @@
 import Link from 'next/link'
 
-import { Container } from '@/components/Container'
+import {Container} from '@/components/Container'
+import {useTranslation} from "next-i18next";
+import {useMemo} from "react";
 
-function NavLink({ href, children }) {
+function NavLink({href, children}) {
   return (
     <Link
       href={href}
@@ -14,6 +16,9 @@ function NavLink({ href, children }) {
 }
 
 export function Footer() {
+  const {t} = useTranslation('common')
+  const year = useMemo(() => new Date().getFullYear(), [])
+
   return (
     <footer className="mt-32">
       <Container.Outer>
@@ -21,14 +26,13 @@ export function Footer() {
           <Container.Inner>
             <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
               <div className="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
-                <NavLink href="/about">About</NavLink>
-                <NavLink href="/projects">Projects</NavLink>
-                <NavLink href="/speaking">Speaking</NavLink>
-                <NavLink href="/uses">Uses</NavLink>
+                <NavLink href="/about">{t('footer.about')}</NavLink>
+                <NavLink href="/projects">{t('footer.projects')}</NavLink>
+                <NavLink href="/articles">{t('footer.articles')}</NavLink>
+                <NavLink href="/stack">{t('footer.stack')}</NavLink>
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
-                &copy; {new Date().getFullYear()} Felix Klauke. All rights
-                reserved.
+                &copy;  {t('footer.copyright', {year})}
               </p>
             </div>
           </Container.Inner>

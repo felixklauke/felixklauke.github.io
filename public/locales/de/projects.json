@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "title": "Projekte - Felix Klauke",
+    "description": "Dies sind Projekte an denen ich mitgewirkt habe."
+  },
+  "header": {
+    "title": "Projekte an denen ich mitgewirkt habe",
+    "description": "Ich habe über die Jahre an vielen Projekten mitgewirkt. Hier sind einige davon. Teilweise sind diese sogar Open Source und du kannst dich gerne daran beteiligen."
+  },
+  "projects": {
+    "joystack": {
+      "title": "Joystack",
+      "description": "Cloudbasierte Gameserver Hostingplatform basierend auf Kubernetes."
+    },
+    "dinoscape": {
+      "title": "Dinoscape",
+      "description": "Trendiges 2D Multiplayer Dinosaurierspiel"
+    },
+    "gommehdnet": {
+      "title": "GommeHD.net",
+      "description": "GommeHD.net ist eine Minecraft Community mit über 1.000.000 Mitgliedern."
+    },
+    "vicuna": {
+      "title": "Vicuna",
+      "description": "How to write better software, online, fast"
+    },
+    "traefik-ambassador": {
+      "title": "Traefik Ambassador",
+      "description": "Ich bin ein Traefik Ambassador und helfe bei der verbreitung von Traefik mit."
+    },
+    "github-campus-expert": {
+      "title": "GitHub Campus Expert",
+      "description": "Ich war in meiner Uni ein GitHub Campus Expert und habe dort geholfen GitHub Events zu organisieren."
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "title": "Projects - Felix Klauke",
+    "description": "These are projects that I have collaborated on."
+  },
+  "header": {
+    "title": "Projects I have worked on",
+    "description": "I have worked on many projects over the years. Some of them are listed below."
+  },
+  "projects": {
+    "joystack": {
+      "title": "Joystack",
+      "description": "Cloud based game server hosting platform based on kubernetes."
+    },
+    "dinoscape": {
+      "title": "Dinoscape",
+      "description": "Trending 2D multiplayer dinosaur game."
+    },
+    "gommehdnet": {
+      "title": "GommeHD.net",
+      "description": "Biggest minecraft minigame server in Germany."
+    },
+    "vicuna": {
+      "title": "Vicuna",
+      "description": "How to write better software, online, fast."
+    },
+    "traefik-ambassador": {
+      "title": "Traefik Ambassador",
+      "description": "I help to spread the word about Traefik."
+    },
+    "github-campus-expert": {
+      "title": "GitHub Campus Expert",
+      "description": "I was my university's GitHub Campus Expert and helped to organize Github events."
+    }
+  }
+}

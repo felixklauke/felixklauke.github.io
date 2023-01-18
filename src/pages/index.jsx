@@ -3,9 +3,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import clsx from 'clsx'
 
-import { Button } from '@/components/Button'
-import { Card } from '@/components/Card'
-import { Container } from '@/components/Container'
+import {Card} from '@/components/Card'
+import {Container} from '@/components/Container'
 import {
   TwitterIcon,
   InstagramIcon,
@@ -21,29 +20,22 @@ import logoAirbnb from '@/images/logos/airbnb.svg'
 import logoFacebook from '@/images/logos/facebook.svg'
 import logoPlanetaria from '@/images/logos/planetaria.svg'
 import logoStarbucks from '@/images/logos/starbucks.svg'
-import { generateRssFeed } from '@/lib/generateRssFeed'
-import { getAllArticles } from '@/lib/getAllArticles'
-import { formatDate } from '@/lib/formatDate'
+import {generateRssFeed} from '@/lib/generateRssFeed'
+import {getAllArticles} from '@/lib/getAllArticles'
+import {formatDate} from '@/lib/formatDate'
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {useTranslation} from "next-i18next";
 
 function MailIcon(props) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 24 24" width="24" height="24"
+         fill="currentColor"
+         {...props}
     >
+      <path fill="none" d="M0 0h24v24H0z"/>
       <path
-        d="M2.75 7.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
-        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
-      />
-      <path
-        d="m4 6 6.024 5.479a2.915 2.915 0 0 0 3.952 0L20 6"
-        className="stroke-zinc-400 dark:stroke-zinc-500"
-      />
+        d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 4.238l-7.928 7.1L4 7.216V19h16V7.238zM4.511 5l7.55 6.662L19.502 5H4.511z"/>
     </svg>
   )
 }
@@ -84,7 +76,7 @@ function ArrowDownIcon(props) {
   )
 }
 
-function Article({ article }) {
+function Article({article}) {
   return (
     <Card as="article">
       <Card.Title href={`/articles/${article.slug}`}>
@@ -99,45 +91,17 @@ function Article({ article }) {
   )
 }
 
-function SocialLink({ icon: Icon, ...props }) {
+function SocialLink({icon: Icon, ...props}) {
   return (
     <Link className="group -m-1 p-1" {...props}>
-      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
+      <Icon
+        className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300"/>
     </Link>
   )
 }
 
-function Newsletter() {
-  return (
-    <form
-      action="/thank-you"
-      className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
-    >
-      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <MailIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Stay up to date</span>
-      </h2>
-      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        Get notified when I publish something new, and unsubscribe at any time.
-      </p>
-      <div className="mt-6 flex">
-        <input
-          type="email"
-          placeholder="Email address"
-          aria-label="Email address"
-          required
-          className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-orange-500 focus:outline-none focus:ring-4 focus:ring-orange-500/10 dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-orange-400 dark:focus:ring-orange-400/10 sm:text-sm"
-        />
-        <Button type="submit" className="ml-4 flex-none">
-          Join
-        </Button>
-      </div>
-    </form>
-  )
-}
-
 function Resume() {
-  let resume = [
+  const resume = [
     {
       company: 'Planetaria',
       title: 'CEO',
@@ -171,17 +135,20 @@ function Resume() {
     },
   ]
 
+  const {t} = useTranslation('home')
+
   return (
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <BriefcaseIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Work</span>
+        <BriefcaseIcon className="h-6 w-6 flex-none"/>
+        <span className="ml-3">{t('work.title')}</span>
       </h2>
       <ol className="mt-6 space-y-4">
         {resume.map((role, roleIndex) => (
           <li key={roleIndex} className="flex gap-4">
-            <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
+            <div
+              className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+              <Image src={role.logo} alt="" className="h-7 w-7" unoptimized/>
             </div>
             <dl className="flex flex-auto flex-wrap gap-x-2">
               <dt className="sr-only">Company</dt>
@@ -201,7 +168,8 @@ function Resume() {
               >
                 <time dateTime={role.start.dateTime ?? role.start}>
                   {role.start.label ?? role.start}
-                </time>{' '}
+                </time>
+                {' '}
                 <span aria-hidden="true">—</span>{' '}
                 <time dateTime={role.end.dateTime ?? role.end}>
                   {role.end.label ?? role.end}
@@ -211,10 +179,6 @@ function Resume() {
           </li>
         ))}
       </ol>
-      <Button href="#" variant="secondary" className="group mt-6 w-full">
-        Download CV
-        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
-      </Button>
     </div>
   )
 }
@@ -246,64 +210,79 @@ function Photos() {
   )
 }
 
-export default function Home({ articles }) {
+export default function Home({articles}) {
+  const {t} = useTranslation('home')
   return (
     <>
       <Head>
         <title>
-          Felix Klauke - Software designer, founder, and amateur astronaut
+          {'Felix Klauke - ' + t('header.title')}
         </title>
         <meta
           name="description"
-          content="I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms."
+          content={t('header.description')}
         />
       </Head>
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Software designer, founder, and amateur astronaut.
+            {t('header.title')}
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Spencer, a software designer and entrepreneur based in New York
-            City. I’m the founder and CEO of Planetaria, where we develop
-            technologies that empower regular people to explore space on their
-            own terms.
+            {t('header.description')}
           </p>
-          <div className="mt-6 flex gap-6">
+          <div className="mt-6 flex gap-6 items-center">
             <SocialLink
               href="https://twitter.com/felixklauke"
-              aria-label="Follow on Twitter"
+              aria-label={t('social.twitter')}
               icon={TwitterIcon}
             />
             <SocialLink
               href="https://instagram.com/felixklauke"
-              aria-label="Follow on Instagram"
+              aria-label={t('social.instagram')}
               icon={InstagramIcon}
             />
             <SocialLink
               href="https://github.com/felixklauke"
-              aria-label="Follow on GitHub"
+              aria-label={t('social.github')}
               icon={GitHubIcon}
             />
             <SocialLink
               href="https://linkedin.com/in/felix-klauke"
-              aria-label="Follow on LinkedIn"
+              aria-label={t('social.linkedin')}
               icon={LinkedInIcon}
             />
+            <SocialLink
+              href="mailto://felix@felix-klauke.de"
+              aria-label={t('social.email')}
+              icon={MailIcon}
+            />
+            <Link
+              href="https://klauke-enterprises.com/contact"
+              className="px-4 font-medium text-orange-500 flex items-center gap-2 p-1 border border-orange-500/40 rounded-md hover:bg-orange-50 dark:hover:bg-orange-900/20 border-dashed"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   className="w-4 h-4 fill-current"
+                   viewBox="0 0 24 24" width="24" height="24">
+                <path fill="none" d="M0 0h24v24H0z"/>
+                <path
+                  d="M21 16.42v3.536a1 1 0 0 1-.93.998c-.437.03-.794.046-1.07.046-8.837 0-16-7.163-16-16 0-.276.015-.633.046-1.07A1 1 0 0 1 4.044 3H7.58a.5.5 0 0 1 .498.45c.023.23.044.413.064.552A13.901 13.901 0 0 0 9.35 8.003c.095.2.033.439-.147.567l-2.158 1.542a13.047 13.047 0 0 0 6.844 6.844l1.54-2.154a.462.462 0 0 1 .573-.149 13.901 13.901 0 0 0 4 1.205c.139.02.322.042.55.064a.5.5 0 0 1 .449.498z"/>
+              </svg>
+              {t('social.talk')}
+            </Link>
           </div>
         </div>
       </Container>
-      <Photos />
+      <Photos/>
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
             {articles.map((article) => (
-              <Article key={article.slug} article={article} />
+              <Article key={article.slug} article={article}/>
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Newsletter />
-            <Resume />
+            <Resume/>
           </div>
         </div>
       </Container>
@@ -311,16 +290,16 @@ export default function Home({ articles }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({locale}) {
   if (process.env.NODE_ENV === 'production') {
     await generateRssFeed()
   }
-
   return {
     props: {
+      ...(await serverSideTranslations(locale, ['common', 'home'])),
       articles: (await getAllArticles())
         .slice(0, 4)
-        .map(({ component, ...meta }) => meta),
+        .map(({component, ...meta}) => meta),
     },
   }
 }

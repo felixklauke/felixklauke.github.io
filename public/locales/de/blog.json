@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "title": "Blog - Felix Klauke",
+    "description": "Mein Blog über Softwareentwicklung, Serververwaltung und alles was dazugehört."
+  },
+  "header": {
+    "title": "Software Design, Kabelsalat im Rechenzentrum und mehr",
+    "description": "Hier schreibe ich rund um die Themen Softwareentwicklung, Serververwaltung und alles was dazugehört."
+  },
+  "article": {
+    "read": "Artikel lesen"
+  }
+}

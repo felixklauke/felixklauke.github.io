@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "title": "Blog - Felix Klauke",
+    "description": "My blog about software design, server management and other stuff."
+  },
+  "header": {
+    "title": "Software design, server management and other stuff.",
+    "description": "Browse my articles about software and servers and learn something new. Or just read them for fun."
+  },
+  "article": {
+    "read": "Read article"
+  }
+}

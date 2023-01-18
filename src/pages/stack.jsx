@@ -1,10 +1,12 @@
 import Head from 'next/head'
 
-import { Card } from '@/components/Card'
-import { Section } from '@/components/Section'
-import { SimpleLayout } from '@/components/SimpleLayout'
+import {Card} from '@/components/Card'
+import {Section} from '@/components/Section'
+import {SimpleLayout} from '@/components/SimpleLayout'
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {useTranslation} from "next-i18next";
 
-function ToolsSection({ children, ...props }) {
+function ToolsSection({children, ...props}) {
   return (
     <Section {...props}>
       <ul role="list" className="space-y-16">
@@ -14,7 +16,7 @@ function ToolsSection({ children, ...props }) {
   )
 }
 
-function Tool({ title, href, children }) {
+function Tool({title, href, children}) {
   return (
     <Card as="li">
       <Card.Title as="h3" href={href}>
@@ -25,19 +27,20 @@ function Tool({ title, href, children }) {
   )
 }
 
-export default function Uses() {
+export default function Stack() {
+  const {t} = useTranslation('stack')
   return (
     <>
       <Head>
-        <title>Uses - Felix Klauke</title>
+        <title>{t('meta.title')}</title>
         <meta
           name="description"
-          content="Software I use, gadgets I love, and other things I recommend."
+          content={t('meta.description')}
         />
       </Head>
       <SimpleLayout
-        title="Software I use, gadgets I love, and other things I recommend."
-        intro="I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff."
+        title={t('header.title')}
+        intro={t('header.description')}
       >
         <div className="space-y-20">
           <ToolsSection title="Workstation">
@@ -117,3 +120,12 @@ export default function Uses() {
     </>
   )
 }
+
+export async function getStaticProps({locale}) {
+  return {
+    props: {
+      ...await serverSideTranslations(locale, ['common', 'stack'])
+    },
+  }
+}
+

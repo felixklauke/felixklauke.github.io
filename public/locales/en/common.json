@@ -1,0 +1,17 @@
+{
+  "menu": "Menu",
+  "navigation": {
+    "title": "Navigation",
+    "about": "About",
+    "projects": "Projects",
+    "articles": "Articles",
+    "stack": "Stack"
+  },
+  "footer": {
+    "about": "About",
+    "projects": "Projects",
+    "articles": "Blog",
+    "stack": "Stack",
+    "copyright": "{{year}} Felix Klauke. All rights reserved."
+  }
+}

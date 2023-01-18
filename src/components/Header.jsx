@@ -1,12 +1,16 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { Popover, Transition } from '@headlessui/react'
+import {useRouter} from 'next/router'
+import {Popover, Transition} from '@headlessui/react'
 import clsx from 'clsx'
 
-import { Container } from '@/components/Container'
+import {Container} from '@/components/Container'
 import avatarImage from '@/images/avatar.png'
-import { Fragment, useEffect, useRef } from 'react'
+import {Fragment, useEffect, useRef} from 'react'
+import {useTranslation} from "next-i18next";
+
+import flagDe from '@/images/flag_de.webp'
+import flagUs from '@/images/flag_us.webp'
 
 function CloseIcon(props) {
   return (
@@ -47,7 +51,8 @@ function SunIcon(props) {
       aria-hidden="true"
       {...props}
     >
-      <path d="M8 12.25A4.25 4.25 0 0 1 12.25 8v0a4.25 4.25 0 0 1 4.25 4.25v0a4.25 4.25 0 0 1-4.25 4.25v0A4.25 4.25 0 0 1 8 12.25v0Z" />
+      <path
+        d="M8 12.25A4.25 4.25 0 0 1 12.25 8v0a4.25 4.25 0 0 1 4.25 4.25v0a4.25 4.25 0 0 1-4.25 4.25v0A4.25 4.25 0 0 1 8 12.25v0Z"/>
       <path
         d="M12.25 3v1.5M21.5 12.25H20M18.791 18.791l-1.06-1.06M18.791 5.709l-1.06 1.06M12.25 20v1.5M4.5 12.25H3M6.77 6.77 5.709 5.709M6.77 17.73l-1.061 1.061"
         fill="none"
@@ -69,7 +74,7 @@ function MoonIcon(props) {
   )
 }
 
-function MobileNavItem({ href, children }) {
+function MobileNavItem({href, children}) {
   return (
     <li>
       <Popover.Button as={Link} href={href} className="block py-2">
@@ -80,11 +85,14 @@ function MobileNavItem({ href, children }) {
 }
 
 function MobileNavigation(props) {
+  const {t} = useTranslation('common')
   return (
     <Popover {...props}>
-      <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
-        Menu
-        <ChevronDownIcon className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400" />
+      <Popover.Button
+        className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
+        {t('menu')}
+        <ChevronDownIcon
+          className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400"/>
       </Popover.Button>
       <Transition.Root>
         <Transition.Child
@@ -96,7 +104,7 @@ function MobileNavigation(props) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Popover.Overlay className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm dark:bg-black/80" />
+          <Popover.Overlay className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm dark:bg-black/80"/>
         </Transition.Child>
         <Transition.Child
           as={Fragment}
@@ -113,19 +121,19 @@ function MobileNavigation(props) {
           >
             <div className="flex flex-row-reverse items-center justify-between">
               <Popover.Button aria-label="Close menu" className="-m-1 p-1">
-                <CloseIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-400" />
+                <CloseIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-400"/>
               </Popover.Button>
               <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
-                Navigation
+                {t('common:navigation.title')}
               </h2>
             </div>
             <nav className="mt-6">
-              <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
-                <MobileNavItem href="/about">About</MobileNavItem>
-                <MobileNavItem href="/articles">Articles</MobileNavItem>
-                <MobileNavItem href="/projects">Projects</MobileNavItem>
-                <MobileNavItem href="/speaking">Speaking</MobileNavItem>
-                <MobileNavItem href="/uses">Uses</MobileNavItem>
+              <ul
+                className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
+                <MobileNavItem href="/about">{t('navigation.about')}</MobileNavItem>
+                <MobileNavItem href="/projects">{t('navigation.projects')}</MobileNavItem>
+                <MobileNavItem href="/articles">{t('navigation.articles')}</MobileNavItem>
+                <MobileNavItem href="/stack">{t('navigation.stack')}</MobileNavItem>
               </ul>
             </nav>
           </Popover.Panel>
@@ -135,7 +143,7 @@ function MobileNavigation(props) {
   )
 }
 
-function NavItem({ href, children }) {
+function NavItem({href, children}) {
   let isActive = useRouter().pathname === href
 
   return (
@@ -143,7 +151,7 @@ function NavItem({ href, children }) {
       <Link
         href={href}
         className={clsx(
-          'relative block px-3 py-2 transition',
+          'relative block px-3 py-2 transition whitespace-nowrap',
           isActive
             ? 'text-orange-500 dark:text-orange-400'
             : 'hover:text-orange-500 dark:hover:text-orange-400'
@@ -151,7 +159,8 @@ function NavItem({ href, children }) {
       >
         {children}
         {isActive && (
-          <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-orange-500/0 via-orange-500/40 to-orange-500/0 dark:from-orange-400/0 dark:via-orange-400/40 dark:to-orange-400/0" />
+          <span
+            className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-orange-500/0 via-orange-500/40 to-orange-500/0 dark:from-orange-400/0 dark:via-orange-400/40 dark:to-orange-400/0"/>
         )}
       </Link>
     </li>
@@ -159,14 +168,15 @@ function NavItem({ href, children }) {
 }
 
 function DesktopNavigation(props) {
+  const {t} = useTranslation('common')
   return (
     <nav {...props}>
-      <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-        <NavItem href="/about">About</NavItem>
-        <NavItem href="/articles">Articles</NavItem>
-        <NavItem href="/projects">Projects</NavItem>
-        <NavItem href="/speaking">Speaking</NavItem>
-        <NavItem href="/uses">Uses</NavItem>
+      <ul
+        className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+        <NavItem href="/about">{t('navigation.about')}</NavItem>
+        <NavItem href="/projects">{t('navigation.projects')}</NavItem>
+        <NavItem href="/articles">{t('navigation.articles')}</NavItem>
+        <NavItem href="/stack">{t('navigation.stack')}</NavItem>
       </ul>
     </nav>
   )
@@ -201,8 +211,10 @@ function ModeToggle() {
       className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
       onClick={toggleMode}
     >
-      <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-orange-50 [@media(prefers-color-scheme:dark)]:stroke-orange-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-orange-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-orange-600" />
-      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-orange-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-orange-500" />
+      <SunIcon
+        className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-orange-50 [@media(prefers-color-scheme:dark)]:stroke-orange-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-orange-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-orange-600"/>
+      <MoonIcon
+        className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-orange-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-orange-500"/>
     </button>
   )
 }
@@ -213,7 +225,7 @@ function clamp(number, a, b) {
   return Math.min(Math.max(number, min), max)
 }
 
-function AvatarContainer({ className, ...props }) {
+function AvatarContainer({className, ...props}) {
   return (
     <div
       className={clsx(
@@ -225,7 +237,7 @@ function AvatarContainer({ className, ...props }) {
   )
 }
 
-function Avatar({ large = false, className, ...props }) {
+function Avatar({large = false, className, ...props}) {
   return (
     <Link
       href="/"
@@ -244,6 +256,115 @@ function Avatar({ large = false, className, ...props }) {
         priority
       />
     </Link>
+  )
+}
+
+function GlobeIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      className="h-6 w-6 stroke-current stroke-2"
+      {...props}
+    >
+      <path
+        fillRule="evenodd"
+        d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 14a6 6 0 110-12 6 6 0 010 12z"
+        clipRule="evenodd"
+      />
+      <path
+        fillRule="evenodd"
+        d="M10 4a6 6 0 100 12 6 6 0 000-12zm0 10a4 4 0 110-8 4 4 0 010 8z"
+        clipRule="evenodd"
+      />
+      <path
+        fillRule="evenodd"
+        d="M10 6a4 4 0 100 8 4 4 0 000-8zm0 6a2 2 0 110-4 2 2 0 010 4z"
+        clipRule="evenodd"
+      />
+    </svg>
+  )
+}
+
+function LanguageSelectItem(props) {
+  return (
+    <button
+      className="flex items-center space-x-2 p-2"
+      onClick={props.onClick}
+    >
+      <Image
+        alt={props.title}
+        src={props.flag}
+        width="64"
+        height="64"
+        className="rounded-sm object-cover w-6 h-4 border dark:border-zinc-600"
+      />
+      <span className={clsx(
+        "text-sm font-medium",
+        {
+          "text-orange-500": props.active,
+          "text-zinc-800 dark:text-zinc-200": !props.active,
+        })}>
+        {props.title}
+      </span>
+    </button>
+  )
+}
+
+function LanguageSelector() {
+  const {i18n} = useTranslation()
+  const router = useRouter()
+
+  const changeLanguage = async (target) => {
+    await i18n.changeLanguage(target)
+    await router.push(router.asPath, router.asPath, {locale: target})
+  }
+
+  return (
+    <Popover className="relative">
+      <Popover.Button
+        className="group flex items-center gap-2 rounded-full bg-white/90 p-3 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+      >
+        <Image
+          alt={i18n.language === 'en' ? 'English' : 'German'}
+          src={i18n.language === 'en' ? flagUs : flagDe}
+          width="64"
+          height="64"
+          className="rounded-sm object-cover w-6 h-4 border dark:border-zinc-600"
+        />
+        <ChevronDownIcon
+          className="h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400"/>
+      </Popover.Button>
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <Popover.Panel
+          className="absolute z-10 w-48 mt-2 origin-top-right bg-white/90 rounded-md shadow-lg ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10">
+          <div className="py-1">
+            <LanguageSelectItem
+              title="Deutsch"
+              language="de"
+              flag={flagDe}
+              active={i18n.language === 'de'}
+              onClick={() => changeLanguage('de')}
+            />
+            <LanguageSelectItem
+              title="English"
+              language="en"
+              flag={flagUs}
+              active={i18n.language === 'en'}
+              onClick={() => changeLanguage('en')}
+            />
+          </div>
+        </Popover.Panel>
+      </Transition>
+    </Popover>
   )
 }
 
@@ -267,7 +388,7 @@ export function Header() {
     }
 
     function updateHeaderStyles() {
-      let { top, height } = headerRef.current.getBoundingClientRect()
+      let {top, height} = headerRef.current.getBoundingClientRect()
       let scrollY = clamp(
         window.scrollY,
         0,
@@ -341,11 +462,11 @@ export function Header() {
     }
 
     updateStyles()
-    window.addEventListener('scroll', updateStyles, { passive: true })
+    window.addEventListener('scroll', updateStyles, {passive: true})
     window.addEventListener('resize', updateStyles)
 
     return () => {
-      window.removeEventListener('scroll', updateStyles, { passive: true })
+      window.removeEventListener('scroll', updateStyles, {passive: true})
       window.removeEventListener('resize', updateStyles)
     }
   }, [isHomePage])
@@ -367,11 +488,11 @@ export function Header() {
             />
             <Container
               className="top-0 order-last -mb-3 pt-3"
-              style={{ position: 'var(--header-position)' }}
+              style={{position: 'var(--header-position)'}}
             >
               <div
                 className="top-[var(--avatar-top,theme(spacing.3))] w-full"
-                style={{ position: 'var(--header-inner-position)' }}
+                style={{position: 'var(--header-inner-position)'}}
               >
                 <div className="relative">
                   <AvatarContainer
@@ -384,7 +505,7 @@ export function Header() {
                   <Avatar
                     large
                     className="block h-16 w-16 origin-left"
-                    style={{ transform: 'var(--avatar-image-transform)' }}
+                    style={{transform: 'var(--avatar-image-transform)'}}
                   />
                 </div>
               </div>
@@ -394,34 +515,35 @@ export function Header() {
         <div
           ref={headerRef}
           className="top-0 z-10 h-16 pt-6"
-          style={{ position: 'var(--header-position)' }}
+          style={{position: 'var(--header-position)'}}
         >
           <Container
             className="top-[var(--header-top,theme(spacing.6))] w-full"
-            style={{ position: 'var(--header-inner-position)' }}
+            style={{position: 'var(--header-inner-position)'}}
           >
             <div className="relative flex gap-4">
               <div className="flex flex-1">
                 {!isHomePage && (
                   <AvatarContainer>
-                    <Avatar />
+                    <Avatar/>
                   </AvatarContainer>
                 )}
               </div>
               <div className="flex flex-1 justify-end md:justify-center">
-                <MobileNavigation className="pointer-events-auto md:hidden" />
-                <DesktopNavigation className="pointer-events-auto hidden md:block" />
+                <MobileNavigation className="pointer-events-auto md:hidden"/>
+                <DesktopNavigation className="pointer-events-auto hidden md:block"/>
               </div>
               <div className="flex justify-end md:flex-1">
-                <div className="pointer-events-auto">
-                  <ModeToggle />
+                <div className="pointer-events-auto flex items-center gap-4">
+                  <ModeToggle/>
+                  <LanguageSelector/>
                 </div>
               </div>
             </div>
           </Container>
         </div>
       </header>
-      {isHomePage && <div style={{ height: 'var(--content-offset)' }} />}
+      {isHomePage && <div style={{height: 'var(--content-offset)'}}/>}
     </>
   )
 }
