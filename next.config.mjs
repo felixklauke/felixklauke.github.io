@@ -10,6 +10,7 @@ const nextConfig = {
   i18n,
   pageExtensions: ['js', 'jsx', 'mdx'],
   reactStrictMode: true,
+  output: 'standalone',
   experimental: {
     scrollRestoration: true,
   },
