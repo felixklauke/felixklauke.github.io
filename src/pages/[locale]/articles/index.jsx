@@ -4,8 +4,8 @@ import {Card} from '@/components/Card'
 import {SimpleLayout} from '@/components/SimpleLayout'
 import {getAllArticles} from '@/lib/getAllArticles'
 import {formatDate} from '@/lib/formatDate'
-import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
+import {getI18nProps, getStaticPaths} from "@/lib/getStatic";
 
 function Article({article}) {
   const {t} = useTranslation('blog')
@@ -65,11 +65,13 @@ export default function ArticlesIndex({articles}) {
   )
 }
 
-export async function getStaticProps({locale}) {
+export async function getStaticProps(ctx) {
   return {
     props: {
+      ...await getI18nProps(ctx, ['common', 'blog']),
       articles: (await getAllArticles()).map(({component, ...meta}) => meta),
-      ...await serverSideTranslations(locale, ['common', 'blog'])
     },
   }
 }
+
+export { getStaticPaths }

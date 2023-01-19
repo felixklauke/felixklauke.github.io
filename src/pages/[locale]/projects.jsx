@@ -9,8 +9,8 @@ import logoGommehd from '@/images/logos/gommehd.webp'
 import logoJoystack from '@/images/logos/joystack.svg'
 import logoTraefik from '@/images/logos/traefik.svg'
 import logoGithub from '@/images/logos/github-campus.png'
-import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
+import {makeStaticProps, getStaticPaths} from "@/lib/getStatic";
 
 const projects = [
   {
@@ -103,10 +103,6 @@ export default function Projects() {
   )
 }
 
-export async function getStaticProps({locale}) {
-  return {
-    props: {
-      ...await serverSideTranslations(locale, ['common', 'projects'])
-    },
-  }
-}
+export const getStaticProps = makeStaticProps(['common', 'projects'])
+
+export {getStaticPaths}

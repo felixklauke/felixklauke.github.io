@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Head from 'next/head'
-import Link from 'next/link'
+import Link from '@/components/TranslatedLink'
 import clsx from 'clsx'
 
 import {Card} from '@/components/Card'
@@ -23,8 +23,8 @@ import logoStarbucks from '@/images/logos/starbucks.svg'
 import {generateRssFeed} from '@/lib/generateRssFeed'
 import {getAllArticles} from '@/lib/getAllArticles'
 import {formatDate} from '@/lib/formatDate'
-import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
+import {getI18nProps, getStaticPaths} from "@/lib/getStatic";
 
 function MailIcon(props) {
   return (
@@ -93,7 +93,7 @@ function Article({article}) {
 
 function SocialLink({icon: Icon, ...props}) {
   return (
-    <Link className="group -m-1 p-1" {...props}>
+    <Link className="group -m-1 p-1" {...props} skipLocaleHandling>
       <Icon
         className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300"/>
     </Link>
@@ -289,17 +289,18 @@ export default function Home({articles}) {
     </>
   )
 }
-
-export async function getStaticProps({locale}) {
+export const getStaticProps = async (ctx) => {
   if (process.env.NODE_ENV === 'production') {
     await generateRssFeed()
   }
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'home'])),
+      ...(await getI18nProps(ctx, ['common', 'home'])),
       articles: (await getAllArticles())
         .slice(0, 4)
         .map(({component, ...meta}) => meta),
     },
   }
 }
+
+export { getStaticPaths }

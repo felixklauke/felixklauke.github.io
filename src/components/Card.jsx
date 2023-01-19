@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from '@/components/TranslatedLink'
 import clsx from 'clsx'
 
 function ChevronRightIcon(props) {

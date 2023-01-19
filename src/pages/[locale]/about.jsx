@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Head from 'next/head'
-import Link from 'next/link'
+import Link from '@/components/TranslatedLink'
 import clsx from 'clsx'
 
 import {Container} from '@/components/Container'
@@ -11,8 +11,8 @@ import {
   LinkedInIcon,
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.jpg'
-import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
+import {getStaticPaths, makeStaticProps} from "@/lib/getStatic";
 
 function SocialLink({className, href, children, icon: Icon}) {
   return (
@@ -127,11 +127,5 @@ export default function About() {
   )
 }
 
-
-export async function getStaticProps({locale}) {
-  return {
-    props: {
-      ...await serverSideTranslations(locale, ['common', 'about'])
-    },
-  }
-}
+export const getStaticProps = makeStaticProps(['common', 'about'])
+export { getStaticPaths }

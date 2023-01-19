@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from '@/components/TranslatedLink'
 
 import {Container} from '@/components/Container'
 import {useTranslation} from "next-i18next";

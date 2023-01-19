@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link'
+import Link from '@/components/TranslatedLink'
 import {useRouter} from 'next/router'
 import {Popover, Transition} from '@headlessui/react'
 import clsx from 'clsx'
@@ -316,8 +316,9 @@ function LanguageSelector() {
   const router = useRouter()
 
   const changeLanguage = async (target) => {
+    const replaced = router.asPath.replace(`/${i18n.language}`, `/${target}`)
     await i18n.changeLanguage(target)
-    await router.push(router.asPath, router.asPath, {locale: target})
+    await router.push(router.asPath, replaced, {locale: target})
   }
 
   return (

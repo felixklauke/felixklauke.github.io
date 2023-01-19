@@ -3,8 +3,8 @@ import Head from 'next/head'
 import {Card} from '@/components/Card'
 import {Section} from '@/components/Section'
 import {SimpleLayout} from '@/components/SimpleLayout'
-import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
+import {makeStaticProps, getStaticPaths} from "@/lib/getStatic";
 
 function ToolsSection({children, ...props}) {
   return (
@@ -121,11 +121,5 @@ export default function Stack() {
   )
 }
 
-export async function getStaticProps({locale}) {
-  return {
-    props: {
-      ...await serverSideTranslations(locale, ['common', 'stack'])
-    },
-  }
-}
-
+export const getStaticProps = makeStaticProps(['common', 'stack'])
+export {getStaticPaths}
