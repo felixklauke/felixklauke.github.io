@@ -1,14 +1,11 @@
 import nextMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
 import rehypePrism from '@mapbox/rehype-prism'
-import nextI18nConfig from './next-i18next.config.js';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  trailingSlash: true,
   pageExtensions: ['js', 'jsx', 'mdx'],
   reactStrictMode: true,
-  output: 'standalone',
   experimental: {
     scrollRestoration: true,
   },
@@ -20,35 +17,35 @@ const nextConfig = {
       {
         source: '/',
         destination: '/de',
-        permanent: false,
+        permanent: true
       },
       {
         source: '/stack',
         destination: '/en/stack',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/projects',
         destination: '/de/projects',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/about',
         destination: '/de/about',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/articles',
         destination: '/de/articles',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/articles/:slug',
         destination: '/de/articles/:slug',
-        permanent: false,
+        permanent: true,
       }
     ]
-  }
+  },
 }
 
 const withMDX = nextMDX({

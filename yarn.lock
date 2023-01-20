@@ -3604,7 +3604,7 @@
     "@babel/runtime" "7.16.7"
     "i18next-browser-languagedetector" "6.1.2"
 
-"next@>= 12.0.0", "next@13.0.2":
+"next@*", "next@>= 12.0.0", "next@13.0.2":
   "integrity" "sha512-uQ5z5e4D9mOe8+upy6bQdYYjo/kk1v3jMW87kTy2TgAyAsEO+CkwRnMgyZ4JoHEnhPZLHwh7dk0XymRNLe1gFw=="
   "resolved" "https://registry.npmjs.org/next/-/next-13.0.2.tgz"
   "version" "13.0.2"
@@ -3629,6 +3629,11 @@
     "@next/swc-win32-arm64-msvc" "13.0.2"
     "@next/swc-win32-ia32-msvc" "13.0.2"
     "@next/swc-win32-x64-msvc" "13.0.2"
+
+"nextjs-redirect@^6.0.1":
+  "integrity" "sha512-SScRdqhGwbD9HbATM+6KMoRyW5QdsPtBBknPPUBxeItnv3wOrhII4pW+0TrvglWNxeRUwI2GsnrDHCV/6juBtQ=="
+  "resolved" "https://registry.npmjs.org/nextjs-redirect/-/nextjs-redirect-6.0.1.tgz"
+  "version" "6.0.1"
 
 "node-releases@^2.0.6":
   "integrity" "sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg=="
@@ -4193,7 +4198,7 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
-"react@^16 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18.2.0", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>= 17.0.2", "react@>=16", "react@18.2.0":
+"react@*", "react@^16 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18.2.0", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>= 17.0.2", "react@>=16", "react@18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"
