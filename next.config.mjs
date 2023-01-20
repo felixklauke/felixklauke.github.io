@@ -18,10 +18,35 @@ const nextConfig = {
   redirects: async () => {
     return [
       {
-        source: '/:path*/',
-        destination: '/de/:path*/',
+        source: '/',
+        destination: '/de',
         permanent: false,
       },
+      {
+        source: '/stack',
+        destination: '/en/stack',
+        permanent: false,
+      },
+      {
+        source: '/projects',
+        destination: '/de/projects',
+        permanent: false,
+      },
+      {
+        source: '/about',
+        destination: '/de/about',
+        permanent: false,
+      },
+      {
+        source: '/articles',
+        destination: '/de/articles',
+        permanent: false,
+      },
+      {
+        source: '/articles/:slug',
+        destination: '/de/articles/:slug',
+        permanent: false,
+      }
     ]
   }
 }
