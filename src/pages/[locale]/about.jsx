@@ -96,6 +96,31 @@ export default function About() {
                   leisten.
                 </p>
               </>}
+              {i18n.language === 'en' && <>
+                <p>
+                  I am Felix Klauke, an experienced software developer with over 10 years of experience in networking,
+                  infrastructure and backend applications. During this time, I specialized in enterprise technologies
+                  and DevOps topics and was able to deepen my deep understanding of these areas. I have a particular
+                  interest in data center infrastructure and server hosting. I have gained extensive experience in
+                  installing, configuring and maintaining Proxmox, Kubernetes and cloud environments.
+                </p>
+
+                <p>
+                  As the managing director of Klauke Enterprises GmbH & Co. KG, I have the opportunity to put my
+                  extensive expertise into practice and successfully implement projects. I am constantly striving to
+                  expand my knowledge and skills in order to offer my customers the best possible solution. My years of
+                  experience in software development and my deep understanding of business requirements enable me to
+                  successfully implement complex projects and provide real value to my clients.
+                </p>
+
+                <p>
+                  I am proud to be part of a strong and experienced team that is passionate about technology and strives
+                  for excellence. I am convinced that the future of technology lies in collaboration and the exchange of
+                  ideas, and I look forward to continuing to work on exciting projects and to making my contribution to
+                  the development of technology.
+                </p>
+              </>
+              }
             </div>
           </div>
           <div className="lg:pl-20">
@@ -128,4 +153,4 @@ export default function About() {
 }
 
 export const getStaticProps = makeStaticProps(['common', 'about'])
-export { getStaticPaths }
+export {getStaticPaths}

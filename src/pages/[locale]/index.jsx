@@ -16,10 +16,10 @@ import image2 from '@/images/photos/image-2.png'
 import image3 from '@/images/photos/image-3.jpg'
 import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.png'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
+import logoKlaukeEnterprises from '@/images/logos/klauke-enterprises.jpeg'
+import logoAm from '@/images/logos/am.jpeg'
+import logoItemis from '@/images/logos/itemis.jpeg'
+import logoHst from '@/images/logos/hst.jpeg'
 import {generateRssFeed} from '@/lib/generateRssFeed'
 import {getAllArticles} from '@/lib/getAllArticles'
 import {formatDate} from '@/lib/formatDate'
@@ -63,19 +63,6 @@ function BriefcaseIcon(props) {
   )
 }
 
-function ArrowDownIcon(props) {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M4.75 8.75 8 12.25m0 0 3.25-3.5M8 12.25v-8.5"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
 function Article({article}) {
   return (
     <Card as="article">
@@ -103,35 +90,82 @@ function SocialLink({icon: Icon, ...props}) {
 function Resume() {
   const resume = [
     {
-      company: 'Planetaria',
-      title: 'CEO',
-      logo: logoPlanetaria,
-      start: '2019',
-      end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear(),
-      },
+      company: 'Klauke Enterprises GmbH & Co. KG',
+      logo: logoKlaukeEnterprises,
+      jobs: [
+        {
+          title: 'Geschäftsführer',
+          start: '2022',
+          end: {
+            label: 'Present',
+            dateTime: new Date().getFullYear(),
+          },
+        },
+        {
+          title: 'Unternehmensinhaber',
+          start: '2018',
+          end: '2022'
+        }
+      ]
     },
     {
-      company: 'Airbnb',
-      title: 'Product Designer',
-      logo: logoAirbnb,
-      start: '2014',
-      end: '2019',
+      company: 'AM-GmbH',
+      logo: logoAm,
+      jobs: [
+        {
+          title: 'System Engineer (Internship)',
+          start: '2021',
+          end: {
+            label: '2 mo',
+            dateTime: '2021'
+          }
+        },
+      ]
     },
     {
-      company: 'Facebook',
-      title: 'iOS Software Engineer',
-      logo: logoFacebook,
-      start: '2011',
-      end: '2014',
+      company: 'itemis AG',
+      logo: logoItemis,
+      jobs: [
+        {
+          title: 'DevOps engineer',
+          start: '2020',
+          end: '2021',
+        },
+        {
+
+          title: 'Software developer',
+          start: '2017',
+          end: '2020',
+        }
+      ]
     },
     {
-      company: 'Starbucks',
-      title: 'Shift Supervisor',
-      logo: logoStarbucks,
-      start: '2008',
-      end: '2011',
+      company: 'HST Systemtechnik GmbH & Co. KG',
+      logo: logoHst,
+      jobs: [
+        {
+          title: 'Internship',
+          start: '2015',
+          end: {
+            label: '1 mo',
+            dateTime: '2015'
+          }
+        }
+      ]
+    },
+    {
+      company: 'AM-GmbH',
+      logo: logoAm,
+      jobs: [
+        {
+          title: 'Internship',
+          start: '2014',
+          end: {
+            label: '1 mo',
+            dateTime: '2014'
+          }
+        }
+      ]
     },
   ]
 
@@ -147,35 +181,34 @@ function Resume() {
         {resume.map((role, roleIndex) => (
           <li key={roleIndex} className="flex gap-4">
             <div
-              className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+              className="relative mt-1 flex h-10 w-10 flex-none bg-white items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-orange-500/5 dark:border dark:border-orange-400 dark:ring-0">
               <Image src={role.logo} alt="" className="h-7 w-7" unoptimized/>
             </div>
-            <dl className="flex flex-auto flex-wrap gap-x-2">
-              <dt className="sr-only">Company</dt>
-              <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                {role.company}
-              </dd>
-              <dt className="sr-only">Role</dt>
-              <dd className="text-xs text-zinc-500 dark:text-zinc-400">
-                {role.title}
-              </dd>
-              <dt className="sr-only">Date</dt>
-              <dd
-                className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
-                aria-label={`${role.start.label ?? role.start} until ${
-                  role.end.label ?? role.end
-                }`}
-              >
-                <time dateTime={role.start.dateTime ?? role.start}>
-                  {role.start.label ?? role.start}
-                </time>
-                {' '}
-                <span aria-hidden="true">—</span>{' '}
-                <time dateTime={role.end.dateTime ?? role.end}>
-                  {role.end.label ?? role.end}
-                </time>
-              </dd>
-            </dl>
+            <div className="flex flex-auto flex-wrap gap-x-2 flex-col">
+              <strong className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">{role.company}</strong>
+              {role.jobs.map((job, jobIndex) => (
+                <div key={jobIndex} className="flex justify-between">
+                  <span className="text-xs text-zinc-500 dark:text-zinc-400">
+                    {job.title}
+                  </span>
+                  <span
+                    className="text-xs text-zinc-400 dark:text-zinc-500"
+                    aria-label={`${job.start.label ?? job.start} until ${
+                      job.end.label ?? job.end
+                    }`}
+                  >
+                    <time dateTime={job.start.dateTime ?? job.start}>
+                      {job.start.label ?? job.start}
+                    </time>
+                    {' '}
+                    <span aria-hidden="true">—</span>{' '}
+                    <time dateTime={job.end.dateTime ?? job.end}>
+                      {job.end.label ?? job.end}
+                    </time>
+                  </span>
+                </div>
+              ))}
+            </div>
           </li>
         ))}
       </ol>
@@ -231,7 +264,7 @@ export default function Home({articles}) {
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             {t('header.description')}
           </p>
-          <div className="mt-6 flex gap-6 items-center">
+          <div className="mt-6 flex gap-6 items-center flex-wrap">
             <SocialLink
               href="https://twitter.com/felixklauke"
               aria-label={t('social.twitter')}
@@ -259,7 +292,7 @@ export default function Home({articles}) {
             />
             <Link
               href="https://klauke-enterprises.com/contact"
-              className="px-4 font-medium text-orange-500 flex items-center gap-2 p-1 border border-orange-500/40 rounded-md hover:bg-orange-50 dark:hover:bg-orange-900/20 border-dashed"
+              className="px-4 font-medium text-orange-500 flex items-center gap-2 p-1 border border-orange-500/40 rounded-md hover:bg-orange-50 dark:hover:bg-orange-900/20 border-dashed whitespace-nowrap"
             >
               <svg xmlns="http://www.w3.org/2000/svg"
                    className="w-4 h-4 fill-current"
@@ -303,4 +336,4 @@ export const getStaticProps = async (ctx) => {
   }
 }
 
-export { getStaticPaths }
+export {getStaticPaths}
