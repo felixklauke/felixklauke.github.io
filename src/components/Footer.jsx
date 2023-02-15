@@ -31,7 +31,7 @@ export function Footer() {
                 <NavLink href="/articles">{t('footer.articles')}</NavLink>
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
-                &copy;  {t('footer.copyright', {year})}
+                Copyright &copy;  {t('footer.copyright', {year})}
               </p>
             </div>
           </Container.Inner>
