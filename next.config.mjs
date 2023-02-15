@@ -49,7 +49,6 @@ const nextConfig = {
 }
 
 const withMDX = nextMDX({
-  pageExtensions: ['js', 'jsx', 'mdx'],
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkGfm],
