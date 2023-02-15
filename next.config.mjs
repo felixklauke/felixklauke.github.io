@@ -1,18 +1,50 @@
 import nextMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
 import rehypePrism from '@mapbox/rehype-prism'
-import nextI18nConfig from './next-i18next.config.js';
-
-const {i18n} = nextI18nConfig;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  i18n,
   pageExtensions: ['js', 'jsx', 'mdx'],
   reactStrictMode: true,
-  output: 'standalone',
   experimental: {
     scrollRestoration: true,
+  },
+  images: {
+    unoptimized: true
+  },
+  redirects: async () => {
+    return [
+      {
+        source: '/',
+        destination: '/de',
+        permanent: true
+      },
+      {
+        source: '/stack',
+        destination: '/en/stack',
+        permanent: true,
+      },
+      {
+        source: '/projects',
+        destination: '/de/projects',
+        permanent: true,
+      },
+      {
+        source: '/about',
+        destination: '/de/about',
+        permanent: true,
+      },
+      {
+        source: '/articles',
+        destination: '/de/articles',
+        permanent: true,
+      },
+      {
+        source: '/articles/:slug',
+        destination: '/de/articles/:slug',
+        permanent: true,
+      }
+    ]
   },
 }
 

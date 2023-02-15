@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link'
+import Link from '@/components/TranslatedLink'
 import {useRouter} from 'next/router'
 import {Popover, Transition} from '@headlessui/react'
 import clsx from 'clsx'
@@ -128,12 +128,10 @@ function MobileNavigation(props) {
               </h2>
             </div>
             <nav className="mt-6">
-              <ul
-                className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
+              <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/about">{t('navigation.about')}</MobileNavItem>
                 <MobileNavItem href="/projects">{t('navigation.projects')}</MobileNavItem>
                 <MobileNavItem href="/articles">{t('navigation.articles')}</MobileNavItem>
-                <MobileNavItem href="/stack">{t('navigation.stack')}</MobileNavItem>
               </ul>
             </nav>
           </Popover.Panel>
@@ -176,7 +174,6 @@ function DesktopNavigation(props) {
         <NavItem href="/about">{t('navigation.about')}</NavItem>
         <NavItem href="/projects">{t('navigation.projects')}</NavItem>
         <NavItem href="/articles">{t('navigation.articles')}</NavItem>
-        <NavItem href="/stack">{t('navigation.stack')}</NavItem>
       </ul>
     </nav>
   )
@@ -316,8 +313,9 @@ function LanguageSelector() {
   const router = useRouter()
 
   const changeLanguage = async (target) => {
+    const replaced = router.asPath.replace(`/${i18n.language}`, `/${target}`)
     await i18n.changeLanguage(target)
-    await router.push(router.asPath, router.asPath, {locale: target})
+    await router.push(router.asPath, replaced, {locale: target})
   }
 
   return (

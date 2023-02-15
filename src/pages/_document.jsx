@@ -35,9 +35,10 @@ const modeScript = `
   }
 `
 
-export default function Document() {
+export default function Document(props) {
+  const currentLocale = props.__NEXT_DATA__.query.locale || 'de'
   return (
-    <Html className="h-full antialiased" lang="en">
+    <Html className="h-full antialiased" lang={currentLocale}>
       <Head>
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
         <link

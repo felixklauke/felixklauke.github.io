@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from '@/components/TranslatedLink'
 
 import {Container} from '@/components/Container'
 import {useTranslation} from "next-i18next";
@@ -29,7 +29,6 @@ export function Footer() {
                 <NavLink href="/about">{t('footer.about')}</NavLink>
                 <NavLink href="/projects">{t('footer.projects')}</NavLink>
                 <NavLink href="/articles">{t('footer.articles')}</NavLink>
-                <NavLink href="/stack">{t('footer.stack')}</NavLink>
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
                 &copy;  {t('footer.copyright', {year})}

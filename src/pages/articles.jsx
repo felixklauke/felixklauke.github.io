@@ -1,9 +1,9 @@
 import redirect from 'nextjs-redirect'
 import {makeStaticProps} from "@/lib/getStatic";
 
-const Redirect = redirect('/de/about')
+const Redirect = redirect('/de/articles')
 
-export default function StackPage() {
+export default function ArticlesPage() {
   return (
     <Redirect>
       <p>Redirecting...</p>
