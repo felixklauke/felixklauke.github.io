@@ -72,18 +72,18 @@ export default function About() {
                 <p>
                   Ich bin Felix Klauke, ein erfahrener Softwareentwickler mit über 10 Jahren Erfahrung in den Bereichen
                   Networking, Infrastruktur und Backend-Applikationen. In dieser Zeit habe ich mich auf
-                  Enterprise-Technologien und DevOps-Themen spezialisiert und konnte mein tiefes Verständnis für diese
+                  Enterprise-Technologien und DevOps-Themen spezialisiert und konnte mein Verständnis für diese
                   Bereiche vertiefen. Mein besonderes Interesse gilt der Rechenzentrums-Infrastruktur und dem
                   Server-Hosting. Ich habe umfangreiche Erfahrungen in der Installation, Konfiguration und Wartung von
                   Proxmox, Kubernetes und Cloud-Umgebungen gesammelt.
                 </p>
                 <p>
                   Als Geschäftsführer von Klauke Enterprises GmbH & Co. KG habe ich die Möglichkeit, mein umfangreiches
-                  Fachwissen in die Praxis umzusetzen und erfolgreich Projekte umzusetzen. Ich bin ständig bestrebt,
+                  Fachwissen in die Praxis umzusetzen und erfolgreich Projekte für Kunden zu betreuen. Ich bin ständig bestrebt,
                   mein
                   Wissen und meine Fähigkeiten zu erweitern, um meinen Kunden die bestmögliche Lösung anbieten zu
                   können.
-                  Durch meine langjährige Erfahrung in der Softwareentwicklung und mein tiefes Verständnis für die
+                  Durch meine langjährige Erfahrung in der Softwareentwicklung und mein Verständnis für die
                   Anforderungen von Unternehmen bin ich in der Lage, komplexe Projekte erfolgreich umzusetzen und meinen
                   Kunden einen echten Mehrwert zu bieten.
                 </p>
@@ -92,7 +92,7 @@ export default function About() {
                   Leidenschaft für Technologie und ihr Streben nach Exzellenz auszeichnet. Ich bin überzeugt, dass die
                   Zukunft der Technologie in der Zusammenarbeit und dem Austausch von Ideen liegt und ich freue mich
                   darauf,
-                  weiterhin an spannenden Projekten zu arbeiten und meinen Beitrag zur Entwicklung der Technologie zu
+                  weiterhin an spannenden Projekten zu arbeiten und meinen Beitrag zur Entwicklung zu
                   leisten.
                 </p>
               </>}
@@ -100,7 +100,7 @@ export default function About() {
                 <p>
                   I am Felix Klauke, an experienced software developer with over 10 years of experience in networking,
                   infrastructure and backend applications. During this time, I specialized in enterprise technologies
-                  and DevOps topics and was able to deepen my deep understanding of these areas. I have a particular
+                  and DevOps topics and was able to enhance my deep understanding of these areas. I have a particular
                   interest in data center infrastructure and server hosting. I have gained extensive experience in
                   installing, configuring and maintaining Proxmox, Kubernetes and cloud environments.
                 </p>

@@ -8,13 +8,17 @@
     "description": "Ich habe über die Jahre an vielen Projekten mitgewirkt. Hier sind einige davon. Teilweise sind diese sogar Open Source und du kannst dich gerne daran beteiligen."
   },
   "projects": {
+    "klauke-enterprises": {
+      "title": "Klauke Enterprise",
+      "description": "Mit Klauke Enterprise biete ich als Systemhaus eine breite Palette an Dienstleistungen an. Von Beratung über Entwicklung bis hin zu Hosting."
+    },
     "joystack": {
       "title": "Joystack",
-      "description": "Cloudbasierte Gameserver Hostingplatform basierend auf Kubernetes."
+      "description": "Cloudbasierte Gameserver Hostingplatform basierend auf Kubernetes. "
     },
     "dinoscape": {
       "title": "Dinoscape",
-      "description": "Trendiges 2D Multiplayer Dinosaurierspiel"
+      "description": "Trendiges 2D Multiplayer Dinosaurierspiel."
     },
     "gommehdnet": {
       "title": "GommeHD.net",
@@ -22,7 +26,7 @@
     },
     "vicuna": {
       "title": "Vicuna",
-      "description": "How to write better software, online, fast"
+      "description": "How to write better software, online, fast."
     },
     "traefik-ambassador": {
       "title": "Traefik Ambassador",

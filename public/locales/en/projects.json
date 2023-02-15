@@ -8,6 +8,10 @@
     "description": "I have worked on many projects over the years. Some of them are listed below."
   },
   "projects": {
+    "klauke-enterprises": {
+      "title": "Klauke Enterprise",
+      "description": "With Klauke Enterprise I offer my services as a system house. We offer a wide range of services from web development to server administration and hosting."
+    },
     "joystack": {
       "title": "Joystack",
       "description": "Cloud based game server hosting platform based on kubernetes."

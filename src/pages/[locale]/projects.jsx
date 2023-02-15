@@ -3,6 +3,7 @@ import Head from 'next/head'
 
 import {Card} from '@/components/Card'
 import {SimpleLayout} from '@/components/SimpleLayout'
+import logoKlaukeEnterprises from '@/images/logos/klauke-enterprises.svg'
 import logoDinoscape from '@/images/logos/dinoscape.png'
 import logoVicuna from '@/images/logos/vicuna.png'
 import logoGommehd from '@/images/logos/gommehd.webp'
@@ -13,6 +14,11 @@ import {useTranslation} from "next-i18next";
 import {makeStaticProps, getStaticPaths} from "@/lib/getStatic";
 
 const projects = [
+  {
+    key: 'klauke-enterprises',
+    link: {href: 'https://klauke-enterprises.com', label: 'klauke-enterprises.com'},
+    logo: logoKlaukeEnterprises,
+  },
   {
     key: 'joystack',
     link: {href: 'https://joystack.com', label: 'joystack.com'},
@@ -34,7 +40,7 @@ const projects = [
     logo: logoVicuna,
   },
   {
-    key: 'treafik-ambassador',
+    key: 'traefik-ambassador',
     link: {href: 'https://traefik.io/traefik-ambassador-program', label: 'traefik.io'},
     logo: logoTraefik,
   },
